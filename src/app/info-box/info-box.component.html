@@ -1,0 +1,24 @@
+<div *ngIf= "formSubmitted else formEntry">
+    <h4>{{ thankyoumsg }}</h4>
+    <p>{{ formData.name }} </p>
+</div>
+<ng-template #formEntry>
+    <h4>{{ signupTitle }}</h4>
+    <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" [(ngModel)]="formData.name" >
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="text" name="email" [(ngModel)]="formData.email" >
+        </div>
+        <div>
+            <button type="submit" [disabled]="!emailForm.form.valid">Sign Up!</button>
+        </div>
+    </form>
+    <div>
+        <h4>Shadow DOM</h4>
+        <input type="range">
+    </div>
+</ng-template>
